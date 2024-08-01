@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>report.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="real-estate-analysis-in-el-salvador-comprehensive-report"><strong>Real Estate Analysis in El Salvador: Comprehensive Report</strong></h1>
+<p><strong>Author:</strong> Manuel Ventura</p>
+<h4 id="introduction">Introduction</h4>
+<p>The real estate market in El Salvador is a dynamic and complex sector that requires comprehensive analysis to uncover underlying trends and provide valuable insights. This project aims to analyze a dataset of properties in El Salvador, focusing on exploratory data analysis, predictive modeling, and visualization. By leveraging various data science techniques, we aim to predict property prices and identify key factors influencing the real estate market.</p>
+<hr>
+<h2 id="theoretical-framework">Theoretical Framework</h2>
+<h3 id="data-science-in-real-estate">Data Science in Real Estate</h3>
+<p>Data science plays a pivotal role in the real estate industry by enabling data-driven decision-making. Key components of data science in real estate include:</p>
+<ol>
+<li><strong>Data Collection</strong>: Gathering data from various sources, such as web scraping, APIs, and public records.</li>
+<li><strong>Data Cleaning</strong>: Ensuring data quality by handling missing values, correcting errors, and standardizing formats.</li>
+<li><strong>Exploratory Data Analysis (EDA)</strong>: Understanding data distribution, relationships, and patterns through statistical analysis and visualization.</li>
+<li><strong>Predictive Modeling</strong>: Building models to predict future outcomes, such as property prices, using historical data.</li>
+<li><strong>Visualization</strong>: Creating visual representations of data to communicate insights effectively.</li>
+</ol>
+<h3 id="machine-learning-in-real-estate">Machine Learning in Real Estate</h3>
+<p>Machine learning models are used to predict property prices, identify market trends, and optimize investment strategies. Commonly used models in real estate include:</p>
+<ol>
+<li><strong>Linear Regression</strong>: A simple model that predicts a target variable based on linear relationships between features.</li>
+<li><strong>Decision Trees</strong>: A non-linear model that splits data into subsets based on feature values to make predictions.</li>
+<li><strong>Random Forests</strong>: An ensemble model that combines multiple decision trees to improve accuracy and robustness.</li>
+<li><strong>Hyperparameter Tuning</strong>: Optimizing model parameters to enhance performance.</li>
+</ol>
+<hr>
+<h2 id="data-exploration">Data Exploration</h2>
+<h3 id="overview-of-the-data">Overview of the Data</h3>
+<p>The dataset used in this analysis comprises various attributes of properties listed for sale in El Salvador. The main columns include:</p>
+<ul>
+<li><strong>Price</strong>: The listed price of the property.</li>
+<li><strong>Square Meters</strong>: The size of the property in square meters.</li>
+<li><strong>Bedrooms</strong>: The number of bedrooms in the property.</li>
+<li><strong>Bathrooms</strong>: The number of bathrooms in the property.</li>
+<li><strong>Parking</strong>: The number of parking spaces available.</li>
+<li><strong>Location</strong>: The geographic location of the property.</li>
+<li><strong>Latitude and Longitude</strong>: Geographic coordinates for mapping.</li>
+<li><strong>Cluster</strong>: Clustering labels for properties based on their features.</li>
+</ul>
+<h3 id="summary-statistics">Summary Statistics</h3>
+<p>Below are the summary statistics of the dataset, providing an overview of the data distribution:</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Count</th>
+<th>Mean</th>
+<th>Std Dev</th>
+<th>Min</th>
+<th>25%</th>
+<th>50%</th>
+<th>75%</th>
+<th>Max</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Price</strong></td>
+<td>980</td>
+<td>374913.44</td>
+<td>342244.45</td>
+<td>110000.00</td>
+<td>150000.00</td>
+<td>279000.00</td>
+<td>450000.00</td>
+<td>1980000.00</td>
+</tr>
+<tr>
+<td><strong>Square Meters</strong></td>
+<td>980</td>
+<td>238.53</td>
+<td>228.28</td>
+<td>102.67</td>
+<td>126.00</td>
+<td>206.00</td>
+<td>300.00</td>
+<td>1350.00</td>
+</tr>
+<tr>
+<td><strong>Bedrooms</strong></td>
+<td>980</td>
+<td>3.32</td>
+<td>1.47</td>
+<td>0.00</td>
+<td>3.00</td>
+<td>3.00</td>
+<td>4.00</td>
+<td>8.00</td>
+</tr>
+<tr>
+<td><strong>Parking</strong></td>
+<td>980</td>
+<td>2.88</td>
+<td>1.85</td>
+<td>1.00</td>
+<td>2.00</td>
+<td>2.00</td>
+<td>3.00</td>
+<td>12.00</td>
+</tr>
+<tr>
+<td><strong>Bathroom</strong></td>
+<td>980</td>
+<td>2.71</td>
+<td>1.41</td>
+<td>1.00</td>
+<td>2.00</td>
+<td>2.00</td>
+<td>3.00</td>
+<td>6.00</td>
+</tr>
+<tr>
+<td><strong>Cluster</strong></td>
+<td>980</td>
+<td>0.31</td>
+<td>0.54</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>1.00</td>
+<td>2.00</td>
+</tr>
+<tr>
+<td><strong>Latitude</strong></td>
+<td>980</td>
+<td>13.72</td>
+<td>0.13</td>
+<td>13.52</td>
+<td>13.67</td>
+<td>13.69</td>
+<td>13.71</td>
+<td>14.00</td>
+</tr>
+<tr>
+<td><strong>Longitude</strong></td>
+<td>980</td>
+<td>-89.24</td>
+<td>0.27</td>
+<td>-89.89</td>
+<td>-89.29</td>
+<td>-89.22</td>
+<td>-89.21</td>
+<td>-88.75</td>
+</tr>
+<tr>
+<td><strong>Location Num</strong></td>
+<td>980</td>
+<td>4.65</td>
+<td>2.76</td>
+<td>0.00</td>
+<td>3.00</td>
+<td>4.00</td>
+<td>7.00</td>
+<td>33.00</td>
+</tr>
+<tr>
+<td><strong>Lin Reg Pred</strong></td>
+<td>980</td>
+<td>386882.76</td>
+<td>225249.84</td>
+<td>-1365657.06</td>
+<td>12794.56</td>
+<td>31503.81</td>
+<td>501095.26</td>
+<td>1206232.00</td>
+</tr>
+<tr>
+<td><strong>Tree Pred</strong></td>
+<td>980</td>
+<td>370211.56</td>
+<td>397904.84</td>
+<td>110000.00</td>
+<td>150000.00</td>
+<td>278518.89</td>
+<td>450000.00</td>
+<td>1850000.00</td>
+</tr>
+<tr>
+<td><strong>Forest Pred</strong></td>
+<td>980</td>
+<td>374477.56</td>
+<td>300524.83</td>
+<td>88818.86</td>
+<td>174295.00</td>
+<td>282518.00</td>
+<td>470117.50</td>
+<td>1630632.06</td>
+</tr>
+<tr>
+<td><strong>Tuned RF Pred</strong></td>
+<td>980</td>
+<td>370225.29</td>
+<td>280784.83</td>
+<td>120925.00</td>
+<td>176563.00</td>
+<td>283174.00</td>
+<td>464943.50</td>
+<td>1481565.06</td>
+</tr>
+<tr>
+<td><strong>Lin Reg Resid</strong></td>
+<td>980</td>
+<td>3206.15</td>
+<td>213824.78</td>
+<td>-757249.06</td>
+<td>-94926.56</td>
+<td>-130974.89</td>
+<td>614462.49</td>
+<td>1452872.00</td>
+</tr>
+<tr>
+<td><strong>Tree Resid</strong></td>
+<td>980</td>
+<td>39922.26</td>
+<td>121243.52</td>
+<td>-1068257.86</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>1410000.00</td>
+</tr>
+<tr>
+<td><strong>Forest Resid</strong></td>
+<td>980</td>
+<td>-56418.85</td>
+<td>190345.15</td>
+<td>-939202.05</td>
+<td>-365758.56</td>
+<td>-448791.93</td>
+<td>187583.33</td>
+<td>1020787.06</td>
+</tr>
+<tr>
+<td><strong>Tuned RF Resid</strong></td>
+<td>980</td>
+<td>39681.15</td>
+<td>138573.64</td>
+<td>-382859.15</td>
+<td>-47054.11</td>
+<td>-73487.11</td>
+<td>29835.32</td>
+<td>1057856.00</td>
+</tr>
+</tbody>
+</table>
+<h3 id="visualizations">Visualizations</h3>
+<h4 id="average-price-by-location">Average Price by Location</h4>
+<p>This bar chart shows the average property price in different locations across El Salvador, highlighting areas with higher average prices, indicating higher demand and possibly better infrastructure.</p>
+<p><img src="charts_and_graphs/average_price_by_location.png" alt="Average Price by Location"></p>
+<h4 id="boxplot-of-price-per-square-meter">Boxplot of Price per Square Meter</h4>
+<p>The boxplot illustrates the distribution of property prices per square meter. This helps in understanding the price variation across different properties.</p>
+<p><img src="charts_and_graphs/boxplot_price_per_square_meter.png" alt="Boxplot Price per Square Meter"></p>
+<h4 id="cross-validation-mse-distribution">Cross-Validation MSE Distribution</h4>
+<p>This plot shows the distribution of Mean Squared Error (MSE) across different cross-validation folds, providing insight into the model's performance variability.</p>
+<p><img src="charts_and_graphs/cross_validation_mse_distribution.png" alt="Cross-Validation MSE Distribution"></p>
+<h4 id="distribution-of-square-meters-by-location">Distribution of Square Meters by Location</h4>
+<p>This bar chart displays the distribution of property sizes in square meters across different locations. It highlights the size variation of properties in urban versus rural areas.</p>
+<p><img src="charts_and_graphs/distribution_of_square_meters_by_location.png" alt="Distribution of Square Meters by Location"></p>
+<h4 id="feature-importance-from-random-forest">Feature Importance from Random Forest</h4>
+<p>The bar chart shows the importance of different features in predicting property prices, as determined by the Random Forest model. This helps identify which features have the most influence on the model's predictions.</p>
+<p><img src="charts_and_graphs/feature_importance_random_forest.png" alt="Feature Importance Random Forest"></p>
+<h4 id="histogram-of-price-per-square-meter">Histogram of Price per Square Meter</h4>
+<p>This histogram displays the frequency distribution of property prices per square meter, providing an overview of price ranges and identifying common price points.</p>
+<p><img src="charts_and_graphs/histogram_price_per_square_meter.png" alt="Histogram Price per Square Meter"></p>
+<h4 id="histograms-of-residuals">Histograms of Residuals</h4>
+<p>The histograms show the distribution of residuals (the difference between actual and predicted prices) for the various models. This helps in understanding the prediction errors of each model.</p>
+<p><img src="charts_and_graphs/histograms_of_residuals.png" alt="Histograms of Residuals"></p>
+<hr>
+<h2 id="predictive-modeling">Predictive Modeling</h2>
+<h3 id="model-building">Model Building</h3>
+<p>We employed several machine learning models to predict property prices, including:</p>
+<ol>
+<li><strong>Linear Regression</strong>: A baseline model that assumes a linear relationship between features and the target variable.</li>
+<li><strong>Decision Tree</strong>: A model that splits the data into subsets based on feature values to make predictions.</li>
+<li><strong>Random Forest</strong>: An ensemble method that combines multiple decision trees to improve accuracy and robustness.</li>
+<li><strong>Tuned Random Forest</strong>: A Random Forest model with optimized hyperparameters to enhance performance.</li>
+</ol>
+<h3 id="model-performance">Model Performance</h3>
+<p>The performance of each model was evaluated using Mean Squared Error (MSE) and R-squared (R²) metrics. The results are summarized below:</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>MSE</th>
+<th>R²</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linear Regression</td>
+<td>476451420.010747</td>
+<td>0.5928151204195274</td>
+</tr>
+<tr>
+<td>Decision Tree</td>
+<td>1745996062.4757835</td>
+<td>0.8507845435038352</td>
+</tr>
+<tr>
+<td>Random Forest</td>
+<td>12051550204.153212</td>
+<td>0.8970056345574438</td>
+</tr>
+<tr>
+<td>Tuned Random Forest</td>
+<td>1919093419.381012</td>
+<td>0.8359216523736016</td>
+</tr>
+</tbody>
+</table>
+<h3 id="residuals-analysis">Residuals Analysis</h3>
+<p>Analyzing the residuals helps</p>
+<p>in understanding the errors made by the models. Below is the residuals plot for the Tuned Random Forest model, which shows the difference between actual and predicted prices.</p>
+<p><img src="charts_and_graphs/tuned_random_forest_residuals.png" alt="Tuned Random Forest Residuals"></p>
+<h4 id="scatter-plot-of-predictions-vs-actual-values">Scatter Plot of Predictions vs. Actual Values</h4>
+<p>This plot compares the actual property prices with the predictions made by the models, providing a visual representation of model accuracy.</p>
+<p><img src="charts_and_graphs/scatter_plot_of_predictions_vs_actual_values.png" alt="Scatter Plot of Predictions vs. Actual Values"></p>
+<hr>
+<h2 id="geospatial-analysis">Geospatial Analysis</h2>
+<h3 id="property-heat-map">Property Heat Map</h3>
+<p>A heat map was created to visualize the density of properties in different regions of El Salvador. This map helps in identifying areas with higher concentrations of property listings.</p>
+<p><img src="charts_and_graphs/property_heat_map.png" alt="Property Heat Map"></p>
+<hr>
+<h2 id="insights-and-conclusions">Insights and Conclusions</h2>
+<h3 id="key-insights">Key Insights</h3>
+<ol>
+<li><strong>Price Distribution</strong>: The average price of properties varies significantly across different locations, with urban areas like San Salvador showing higher average prices.</li>
+<li><strong>Feature Importance</strong>: The Random Forest model identified key features influencing property prices, such as square meters, location, and the number of bedrooms.</li>
+<li><strong>Model Performance</strong>: The Tuned Random Forest model provided the best performance in terms of accuracy, followed by the Random Forest and Decision Tree models.</li>
+<li><strong>Geospatial Trends</strong>: The heat map revealed high concentrations of property listings in urban areas, indicating higher market activity in these regions.</li>
+</ol>
+<h3 id="conclusion">Conclusion</h3>
+<p>This analysis provides a comprehensive overview of the real estate market in El Salvador. By leveraging data science and machine learning techniques, we were able to uncover key insights and build predictive models to estimate property prices. The findings can help stakeholders make informed decisions and optimize their strategies in the real estate market.</p>
+<h3 id="future-work">Future Work</h3>
+<ol>
+<li><strong>Data Expansion</strong>: Collect more data to improve model robustness and accuracy.</li>
+<li><strong>Advanced Models</strong>: Explore other advanced machine learning techniques to enhance predictive performance.</li>
+<li><strong>Interactive Dashboard</strong>: Develop an interactive dashboard for real-time data analysis and visualization.</li>
+</ol>
+<hr>
+<p>This report aims to offer a detailed analysis of the real estate market in El Salvador, utilizing various data science techniques to derive meaningful insights and accurate predictions. The visualizations and models presented provide a comprehensive understanding of the market dynamics, aiding in better decision-making for stakeholders.</p>
+
+</body>
+</html>

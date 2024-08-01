@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_44ef8cba9ade45e5d633e69699e8b421 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+     <div style="position: fixed; 
+     bottom: 50px; left: 50px; width: 150px; height: 220px; 
+     border:2px solid grey; z-index:9999; font-size:14px;
+     background-color:white; opacity: 0.9;">
+     &nbsp; <b>Property Density</b> <br>
+     &nbsp; <i class="fa fa-circle" style="color:#10002b"></i> > 100 <br>
+     &nbsp; <i class="fa fa-circle" style="color:#240046"></i> 80 - 100 <br>
+     &nbsp; <i class="fa fa-circle" style="color:#3c096c"></i> 60 - 80 <br>
+     &nbsp; <i class="fa fa-circle" style="color:#5a189a"></i> 40 - 60 <br>
+     &nbsp; <i class="fa fa-circle" style="color:#7b2cbf"></i> 20 - 40 <br>
+     &nbsp; <i class="fa fa-circle" style="color:#9d4edd"></i> < 20 <br>
+     </div>
+     
+    
+            <div class="folium-map" id="map_44ef8cba9ade45e5d633e69699e8b421" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_44ef8cba9ade45e5d633e69699e8b421 = L.map(
+                "map_44ef8cba9ade45e5d633e69699e8b421",
+                {
+                    center: [13.794185, -88.89653],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 8,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_ba446df6ea73943301c322b6228a842e = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_ba446df6ea73943301c322b6228a842e.addTo(map_44ef8cba9ade45e5d633e69699e8b421);
+        
+    
+            var circle_38f54dc07eebcc8068a2c77e2c5f8402 = L.circle(
+                [14.131176086561421, -89.07460245622819],
+                {"bubblingMouseEvents": true, "color": "#3c096c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3c096c", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6324.555320336759, "stroke": true, "weight": 3}
+            ).addTo(map_44ef8cba9ade45e5d633e69699e8b421);
+        
+    
+        var popup_9d7cc290bf1acebdc35d29bb2ea40f93 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_402e13902d8477dccff6e41682ec41d7 = $(`<div id="html_402e13902d8477dccff6e41682ec41d7" style="width: 100.0%; height: 100.0%;"><b>Chalatenango</b><br>Property Count: 40</div>`)[0];
+                popup_9d7cc290bf1acebdc35d29bb2ea40f93.setContent(html_402e13902d8477dccff6e41682ec41d7);
+            
+        
+
+        circle_38f54dc07eebcc8068a2c77e2c5f8402.bindPopup(popup_9d7cc290bf1acebdc35d29bb2ea40f93)
+        ;
+
+        
+    
+    
+            var circle_99976b90362c944902d36e1263749059 = L.circle(
+                [13.70421489901452, -89.36265531845014],
+                {"bubblingMouseEvents": true, "color": "#3c096c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3c096c", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7071.067811865476, "stroke": true, "weight": 3}
+            ).addTo(map_44ef8cba9ade45e5d633e69699e8b421);
+        
+    
+        var popup_c02ce35af0faa45026e9b6a65dbccb45 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_305c116beb0ecc168e9c68f7ac1a29a9 = $(`<div id="html_305c116beb0ecc168e9c68f7ac1a29a9" style="width: 100.0%; height: 100.0%;"><b>La Libertad</b><br>Property Count: 50</div>`)[0];
+                popup_c02ce35af0faa45026e9b6a65dbccb45.setContent(html_305c116beb0ecc168e9c68f7ac1a29a9);
+            
+        
+
+        circle_99976b90362c944902d36e1263749059.bindPopup(popup_c02ce35af0faa45026e9b6a65dbccb45)
+        ;
+
+        
+    
+    
+            var circle_25f90d12f960f5aa9b446d71927549f5 = L.circle(
+                [13.475243924954302, -88.96411665590585],
+                {"bubblingMouseEvents": true, "color": "#10002b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#10002b", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3872.983346207417, "stroke": true, "weight": 3}
+            ).addTo(map_44ef8cba9ade45e5d633e69699e8b421);
+        
+    
+        var popup_ab1c79f6748366d7240cbb0dd6ef8638 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_b5d94208ae97602869e06b4c13ab6556 = $(`<div id="html_b5d94208ae97602869e06b4c13ab6556" style="width: 100.0%; height: 100.0%;"><b>La Paz</b><br>Property Count: 15</div>`)[0];
+                popup_ab1c79f6748366d7240cbb0dd6ef8638.setContent(html_b5d94208ae97602869e06b4c13ab6556);
+            
+        
+
+        circle_25f90d12f960f5aa9b446d71927549f5.bindPopup(popup_ab1c79f6748366d7240cbb0dd6ef8638)
+        ;
+
+        
+    
+    
+            var circle_71598b00cb3430da6ccf9f5a27b65c84 = L.circle(
+                [13.536076113149521, -88.25469006296346],
+                {"bubblingMouseEvents": true, "color": "#3c096c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3c096c", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6708.203932499369, "stroke": true, "weight": 3}
+            ).addTo(map_44ef8cba9ade45e5d633e69699e8b421);
+        
+    
+        var popup_237c0a552e52dd4fce1b7bc8b192e77a = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_e303f193cdad100d739a1f672f93bdda = $(`<div id="html_e303f193cdad100d739a1f672f93bdda" style="width: 100.0%; height: 100.0%;"><b>San Miguel</b><br>Property Count: 45</div>`)[0];
+                popup_237c0a552e52dd4fce1b7bc8b192e77a.setContent(html_e303f193cdad100d739a1f672f93bdda);
+            
+        
+
+        circle_71598b00cb3430da6ccf9f5a27b65c84.bindPopup(popup_237c0a552e52dd4fce1b7bc8b192e77a)
+        ;
+
+        
+    
+    
+            var circle_aa66d7ec44a456937dfbd39b84b4f6d5 = L.circle(
+                [13.763285578531269, -89.16543019126854],
+                {"bubblingMouseEvents": true, "color": "#e0aaff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e0aaff", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12247.44871391589, "stroke": true, "weight": 3}
+            ).addTo(map_44ef8cba9ade45e5d633e69699e8b421);
+        
+    
+        var popup_95fb39554bd32ef75008b5a494d9c262 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_9c820ea109bdc932a634f78679e7312a = $(`<div id="html_9c820ea109bdc932a634f78679e7312a" style="width: 100.0%; height: 100.0%;"><b>San Salvador</b><br>Property Count: 150</div>`)[0];
+                popup_95fb39554bd32ef75008b5a494d9c262.setContent(html_9c820ea109bdc932a634f78679e7312a);
+            
+        
+
+        circle_aa66d7ec44a456937dfbd39b84b4f6d5.bindPopup(popup_95fb39554bd32ef75008b5a494d9c262)
+        ;
+
+        
+    
+    
+            var circle_5e49ae832fa51850e07df47582f9a433 = L.circle(
+                [13.601345079180307, -88.72111079264069],
+                {"bubblingMouseEvents": true, "color": "#10002b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#10002b", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3162.2776601683795, "stroke": true, "weight": 3}
+            ).addTo(map_44ef8cba9ade45e5d633e69699e8b421);
+        
+    
+        var popup_b0e1252e9c18eee9f6f21e252d9dd9c9 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_bd3418b165f7b1f4ac37f4dadc2452e4 = $(`<div id="html_bd3418b165f7b1f4ac37f4dadc2452e4" style="width: 100.0%; height: 100.0%;"><b>San Vicente</b><br>Property Count: 10</div>`)[0];
+                popup_b0e1252e9c18eee9f6f21e252d9dd9c9.setContent(html_bd3418b165f7b1f4ac37f4dadc2452e4);
+            
+        
+
+        circle_5e49ae832fa51850e07df47582f9a433.bindPopup(popup_b0e1252e9c18eee9f6f21e252d9dd9c9)
+        ;
+
+        
+    
+    
+            var circle_d53d99573427b7f371f2dc3e3cf540ee = L.circle(
+                [14.117605269004107, -89.50516124074377],
+                {"bubblingMouseEvents": true, "color": "#5a189a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5a189a", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7745.966692414834, "stroke": true, "weight": 3}
+            ).addTo(map_44ef8cba9ade45e5d633e69699e8b421);
+        
+    
+        var popup_0e47d904fb31b1078229de5fb483aae7 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_9f128f603979970a49e597c93da341d2 = $(`<div id="html_9f128f603979970a49e597c93da341d2" style="width: 100.0%; height: 100.0%;"><b>Santa Ana</b><br>Property Count: 60</div>`)[0];
+                popup_0e47d904fb31b1078229de5fb483aae7.setContent(html_9f128f603979970a49e597c93da341d2);
+            
+        
+
+        circle_d53d99573427b7f371f2dc3e3cf540ee.bindPopup(popup_0e47d904fb31b1078229de5fb483aae7)
+        ;
+
+        
+    
+    
+            var circle_4697da1b5430fb381bdcd5c1a51f9e30 = L.circle(
+                [13.694172851569268, -89.68425637860184],
+                {"bubblingMouseEvents": true, "color": "#240046", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#240046", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5000.0, "stroke": true, "weight": 3}
+            ).addTo(map_44ef8cba9ade45e5d633e69699e8b421);
+        
+    
+        var popup_81b0db688d7792dfb5c15fbb299cab3e = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_2a1c2bb313d9bb40af9fb16f9a16c074 = $(`<div id="html_2a1c2bb313d9bb40af9fb16f9a16c074" style="width: 100.0%; height: 100.0%;"><b>Sonsonate</b><br>Property Count: 25</div>`)[0];
+                popup_81b0db688d7792dfb5c15fbb299cab3e.setContent(html_2a1c2bb313d9bb40af9fb16f9a16c074);
+            
+        
+
+        circle_4697da1b5430fb381bdcd5c1a51f9e30.bindPopup(popup_81b0db688d7792dfb5c15fbb299cab3e)
+        ;
+
+        
+    
+</script>
+</html>
